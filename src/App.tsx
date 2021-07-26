@@ -8,6 +8,7 @@ import { TododList } from "./pages/TodoList";
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import { UserFetch } from "./pages/UserFetch";
 import { Counter } from "./pages/Counter";
+import { Lista } from "./pages/Lista";
 const NavBar = styled.div`
   display: flex;
   flex-direction: row;
@@ -63,12 +64,14 @@ const App: FC = () => {
             <ButtonNav to="/user-fetch">User-fetch</ButtonNav>
             <ButtonNav to="/">TodoList React-TypeScript-Redux</ButtonNav>
             <ButtonNav to="/counter">Counter</ButtonNav>
+            <ButtonNav to="/lista">Normal list</ButtonNav>
             </Nav>
           </NavBar>
           <Switch>
             <Route exact path="/" component={TododList} />
             <Route path="/user-fetch" component={UserFetch} />
             <Route path="/counter" component={Counter} />
+            <Route path="/lista" component={Lista} />
           </Switch>
         </div>
       </BrowserRouter>
