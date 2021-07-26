@@ -1,14 +1,17 @@
+
+
+
 export interface CounterState {
   counter: number;
 }
 const initialState: CounterState = {
-  counter: 0,
+  counter:0,
 };
 export enum CounterActionTypes {
   increment = "increment",
   decrement = "decrement",
 }
-interface addCounterAction {
+interface addCounterAction  {
   type: CounterActionTypes.increment;
 }
 interface minusCounterAction {
@@ -22,9 +25,9 @@ export const counterReducer = (
 ): CounterState => {
   switch (action.type) {
     case CounterActionTypes.increment:
-      return { counter: (state.counter = +1) };
+      return {...state, counter: (state.counter +=1) };
     case CounterActionTypes.decrement:
-      return { counter: (state.counter = +2) };
+      return { counter: (state.counter -=1) };
     default:
       return state;
   }

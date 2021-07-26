@@ -1,7 +1,8 @@
-import axios from "axios";
-import { Dispatch, FC, useEffect } from "react";
+
+import {  FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useTypeSelector } from "../hook/useTypeSelector";
+import { fetchUsers } from "../store/action/action";
 import { UserAction, UserActionTypes } from "../store/reducer/userReducer";
 
 export const UserFetch: FC = () => {
@@ -11,27 +12,7 @@ export const UserFetch: FC = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
-  const fetchUsers = () => {
-    return async (dispatch: Dispatch<UserAction>) => {
-      try {
-        dispatch({ type: UserActionTypes.FETCH_USER });
-        const res = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
-        );
 
-        setTimeout(
-          () =>
-            dispatch({
-              type: UserActionTypes.FETCH_USER_SUCCESS,
-              payload: res.data,
-            }),
-          500
-        );
-      } catch (e) {
-        dispatch({ type: UserActionTypes.FETCH_USER_ERROR, payload: "Error" });
-      }
-    };
-  };
   if (loading) {
     return <h1>Loading...</h1>;
   }

@@ -1,7 +1,6 @@
-import React, { ChangeEvent, FC, useState } from "react";
-import logo from "./logo.svg";
+import React, {  FC } from "react";
 import "./App.css";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 import { store } from "./store";
 import styled from "styled-components";
 
@@ -14,7 +13,7 @@ const NavBar = styled.div`
   flex-direction: row;
   width: 100%;
   height: 60px;
-  background-color: violet;
+  background-color:#18191a;
   justify-content: space-between;
 `;
 
@@ -27,7 +26,27 @@ const Logo = styled.div`
 const Text = styled.p`
   font-size: 35px;
   color: white;
-  font-wight: bold;
+  font-weight: bold;
+`;
+const ButtonNav=styled(NavLink)`
+background-color: #18191a;
+color:white;
+text-decoration: none;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 5px 20px;
+padding: 0 20px;
+border-radius: 15px;
+
+:hover{
+  background-color: #3A3B3C;
+}
+
+`;
+const Nav =styled.div`
+display:flex;
+flex-direction: row;
 `;
 
 const App: FC = () => {
@@ -39,9 +58,12 @@ const App: FC = () => {
             <Logo>
               <Text>TYPESCRIPT-REACT</Text>
             </Logo>
-            <NavLink to="/user-fetch">User-fetch</NavLink>
-            <NavLink to="/">TodoList React-TypeScript-Redux</NavLink>
-            <NavLink to="/counter">Counter</NavLink>
+            <Nav>
+
+            <ButtonNav to="/user-fetch">User-fetch</ButtonNav>
+            <ButtonNav to="/">TodoList React-TypeScript-Redux</ButtonNav>
+            <ButtonNav to="/counter">Counter</ButtonNav>
+            </Nav>
           </NavBar>
           <Switch>
             <Route exact path="/" component={TododList} />
